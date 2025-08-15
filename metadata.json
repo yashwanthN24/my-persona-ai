@@ -1,0 +1,5 @@
+{
+  "name": "Persona Chat AI",
+  "description": "A chat application that utilizes the Gemini API to simulate conversations with different AI personas, specifically Hitesh Choudhary and Piyush Garg. Users can switch between personas for context-aware, stylistically accurate responses.",
+  "requestFramePermissions": []
+}
