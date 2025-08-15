@@ -258,8 +258,8 @@ const App: React.FC = () => {
   return (
     <div className="flex flex-col h-screen bg-gray-900 text-white font-sans antialiased p-2 sm:p-4 gap-4">
       <AppHeader viewMode={viewMode} onToggleViewMode={handleToggleViewMode} />
-      <main className="flex-1 grid grid-cols-1  lg:grid-cols-10 gap-4 overflow-hidden ">
-        <div className="col-span-1 lg:col-span-2 bg-gray-800/50 rounded-2xl border border-gray-700/50 overflow-hidden">
+      <main className="flex-1 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-10 gap-4 overflow-y-auto">
+        <div className="col-span-1 md:col-span-1 lg:col-span-2 bg-gray-800/50 rounded-2xl border border-gray-700/50 overflow-auto min-h-[50vh] sm:min-h-[60vh] lg:min-h-0">
           <LeftPanel
             viewMode={viewMode}
             currentPersona={currentPersona}
@@ -268,7 +268,7 @@ const App: React.FC = () => {
             onSelectQuestion={handleSelectQuestion}
           />
         </div>
-        <div className="col-span-1 w-full lg:col-span-5 bg-gray-800/50 rounded-2xl border border-gray-700/50 overflow-hidden flex flex-col min-h-[70vh] lg:min-h-0 items-center justify-center">
+        <div className="col-span-1 md:col-span-2 lg:col-span-5 bg-gray-800/50 rounded-2xl border border-gray-700/50 overflow-hidden flex flex-col min-h-[60vh] sm:min-h-[70vh] lg:min-h-0">
           {viewMode === ViewMode.Chat ? (
             <ChatPanel
               messages={messages}
@@ -287,7 +287,7 @@ const App: React.FC = () => {
             />
           )}
         </div>
-        <div className="col-span-1 lg:col-span-3 bg-gray-800/50 rounded-2xl border border-gray-700/50 overflow-hidden">
+        <div className="col-span-1 md:col-span-1 lg:col-span-3 bg-gray-800/50 rounded-2xl border border-gray-700/50 overflow-auto">
           <EvaluationPanel
             viewMode={viewMode}
             isLoading={viewMode === ViewMode.Chat ? isChatLoading : isComparing}
