@@ -24,6 +24,8 @@ const generateCandidateResponse = async (
       config: {
         systemInstruction: systemInstruction,
         thinkingConfig: { thinkingBudget: 0 },
+        maxOutputTokens: 2048, // Good balance - allows complete responses
+        stopSequences: ["\n\nUser:"],
       },
     });
     return response.text;
@@ -42,9 +44,11 @@ const generateStreamingResponse = async (
     const response = await ai.models.generateContentStream({
       model: "gemini-2.5-flash",
       contents: prompt,
+
       config: {
         systemInstruction: systemInstruction,
         thinkingConfig: { thinkingBudget: 0 },
+        maxOutputTokens: 500,
       },
     });
 
