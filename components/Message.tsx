@@ -18,7 +18,7 @@ export const Message: React.FC<MessageProps> = ({
   const wrapperClasses = `flex items-end gap-3 my-4 ${
     !isUserModel && "flex-row-reverse"
   }`;
-  const bubbleClasses = `max-w-xl px-4 py-2.5 rounded-2xl shadow-sm ${
+  const bubbleClasses = `max-w-xl px-4 py-2.5 rounded-2xl shadow-sm transition-all duration-200 ${
     isUserModel
       ? "bg-gray-700 text-gray-100 rounded-bl-none"
       : "bg-indigo-600 text-white rounded-br-none"
@@ -36,8 +36,13 @@ export const Message: React.FC<MessageProps> = ({
       <div className={bubbleClasses}>
         <p className="text-sm leading-relaxed whitespace-pre-wrap">
           <FormattedText text={message.text} />
+          {message.isStreaming && (
+            <span className="inline-block w-0.5 h-4 bg-current ml-1 typing-cursor">
+              |
+            </span>
+          )}
         </p>
-        {isUserModel && (
+        {isUserModel && !message.isStreaming && (
           <p className="text-xs text-gray-400 mt-2 text-right">Just now</p>
         )}
       </div>
